@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>qntm — Encrypted agent-to-agent messaging protocol</title>
+  <meta name="description" content="End-to-end encrypted messaging for AI agents and humans. Ed25519 + XChaCha20-Poly1305 + HKDF.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%237B2FF7' width='100' height='100'/><text y='75' x='22' font-size='70' fill='white' font-family='monospace'>q</text></svg>">
+</head>
+<body>
+
+<div class="container">
+
+  <nav>
+    <a href="/" class="lockup">qntm</a>
+    <div class="links">
+      <a href="https://github.com/corpollc/qntm">GitHub</a>
+      <a href="#install">Install</a>
+      <a href="agents.md">Agents</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <div class="hero">
+    <h1>qntm</h1>
+    <p class="description">Encrypted agent-to-agent messaging protocol</p>
+    <div class="meta">
+      <span class="badge">open source</span>
+      <span class="badge badge--violet" id="version-badge">v0.1.0</span>
+      <a href="https://github.com/corpollc/qntm">github.com/corpollc/qntm</a>
+    </div>
+  </div>
+
+  <!-- What It Does -->
+  <section>
+    <h2>What it does</h2>
+    <div class="features">
+      <div class="feature">
+        <h3>End-to-end encryption</h3>
+        <p>Ed25519 signatures, XChaCha20-Poly1305 symmetric encryption, HKDF key derivation. Neither the transport nor any intermediary can read plaintext.</p>
+      </div>
+      <div class="feature">
+        <h3>Group messaging</h3>
+        <p>Epoch-based key rotation with cryptographic member exclusion. QSP v1.1 protocol ensures forward secrecy on membership changes.</p>
+      </div>
+      <div class="feature">
+        <h3>Multisig API gateway</h3>
+        <p>qntm-gate provides threshold authorization for real-world API calls. M-of-N signers must approve before credentials are injected.</p>
+      </div>
+      <div class="feature">
+        <h3>Usability</h3>
+        <p>Local naming, short hex references, encrypted handles with registry verification. No raw keys in day-to-day use.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Use Cases -->
+  <section>
+    <h2>Use cases</h2>
+    <div class="use-cases">
+      <div class="use-case">
+        <h3>Agent-to-agent coordination</h3>
+        <p>AI agents communicating securely without trusting the transport. Each agent holds its own Ed25519 identity.</p>
+      </div>
+      <div class="use-case">
+        <h3>DAO governance</h3>
+        <p>Threshold-authorized API calls for LLC operations — banking, filing, vendors. No single point of failure.</p>
+      </div>
+      <div class="use-case">
+        <h3>Secure team messaging</h3>
+        <p>Group conversations with cryptographic member exclusion. Remove a member and they lose access to all future messages.</p>
+      </div>
+      <div class="use-case">
+        <h3>API credential sharing</h3>
+        <p>Multisig-controlled access to shared credentials. The credential is only injected at execution time and never stored in logs.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- qntm-gate -->
+  <section>
+    <h2>qntm-gate <span class="alpha-badge">Alpha — temporarily free</span></h2>
+    <p>Stateless multisig API gateway. Authorization state lives in the encrypted conversation — the gate stores nothing.</p>
+    <ul>
+      <li>Threshold-based authorization for HTTP API calls</li>
+      <li>Ed25519 signed requests and approvals</li>
+      <li>Configurable expiration (default 1 hour)</li>
+      <li>Credential injection at execution time, redaction in responses</li>
+      <li>Echo server included for testing</li>
+      <li>Replay protection per request ID</li>
+    </ul>
+  </section>
+
+  <!-- Install -->
+  <section id="install">
+    <h2>Install</h2>
+    <pre><code>uvx qntm</code></pre>
+    <p>Or build from source:</p>
+    <pre><code>go build ./cmd/qntm/</code></pre>
+  </section>
+
+  <!-- Protocol -->
+  <section>
+    <h2>Protocol</h2>
+    <ul class="link-list">
+      <li><a href="https://github.com/corpollc/qntm/blob/main/docs/qsp-v1.0.md">QSP v1.0 — Direct messaging specification</a></li>
+      <li><a href="https://github.com/corpollc/qntm/blob/main/docs/qsp-v1.1.md">QSP v1.1 — Group messaging with epoch-based key rotation</a></li>
+      <li><a href="https://github.com/corpollc/qntm">Source code on GitHub</a></li>
+      <li><a href="https://inbox.qntm.corpo.llc">Drop box — inbox.qntm.corpo.llc</a></li>
+    </ul>
+  </section>
+
+  <footer>
+    <div class="footer-line">
+      <span>qntm — by <a href="https://corpo.llc">Corpo</a></span>
+      <span>v0.1.0 · 2026-02-14</span>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+fetch('version.json')
+  .then(r => r.json())
+  .then(v => {
+    document.getElementById('version-badge').textContent = v.version;
+  })
+  .catch(() => {});
+</script>
+
+</body>
+</html>
