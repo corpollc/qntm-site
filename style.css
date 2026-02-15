@@ -276,6 +276,32 @@ footer a:hover {
   align-items: center;
 }
 
+/* Quick start */
+.quickstart-steps h3 {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #999;
+  margin: 24px 0 8px;
+}
+
+.quickstart-steps h3:first-child {
+  margin-top: 0;
+}
+
+.agents-callout {
+  margin-top: 24px;
+  padding: 16px;
+  background: #1a1a2e;
+  border: 1px solid #7B2FF7;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.agents-callout a {
+  color: #7B2FF7;
+}
+
 /* Responsive */
 @media (max-width: 600px) {
   .hero h1 {

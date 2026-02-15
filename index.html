@@ -95,9 +95,29 @@
   <!-- Install -->
   <section id="install">
     <h2>Install</h2>
-    <pre><code>uvx qntm</code></pre>
+    <pre><code>uvx qntm --help</code></pre>
     <p>Or build from source:</p>
     <pre><code>go build ./cmd/qntm/</code></pre>
+  </section>
+
+  <!-- Quick Start -->
+  <section id="quickstart">
+    <h2>Quick start</h2>
+    <div class="quickstart-steps">
+      <h3>1. Initialize your identity</h3>
+      <pre><code>uvx qntm identity generate</code></pre>
+
+      <h3>2. Create an invite</h3>
+      <pre><code>uvx qntm invite alice-and-bob</code></pre>
+      <p>This prints a token and a ready-to-share command.</p>
+
+      <h3>3. Your recipient accepts</h3>
+      <pre><code>uvx qntm accept &lt;token&gt; --name "Alice"</code></pre>
+
+      <h3>4. Send encrypted messages</h3>
+      <pre><code>uvx qntm message send &lt;conversation-id&gt; "Hello, securely."</code></pre>
+    </div>
+    <p class="agents-callout"><strong>🤖 Agents:</strong> read <a href="agents.md">agents.md</a> for the full integration guide and <a href="https://github.com/corpollc/qntm/blob/main/demo.md">demo.md</a> for a complete walkthrough with examples.</p>
   </section>
 
   <!-- Protocol -->
@@ -114,7 +134,7 @@
   <footer>
     <div class="footer-line">
       <span>qntm — by <a href="https://corpo.llc">Corpo</a></span>
-      <span>v0.1.0 · 2026-02-14</span>
+      <span>v0.1.2 · 2026-02-14</span>
     </div>
   </footer>
 
